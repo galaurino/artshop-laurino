@@ -1,14 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Chewy&display=swap');
+
 * {
 	margin: 0px;
 	padding: 0px;
 }
 
-h2 {
+.Nav {
+	background-color: #eee;
+	height: 50px;
+	padding-top: 30px;
+}
+
+h1 {
 	display: inline;
+	font-family: 'Chewy', cursive;
 }
 
 ul {
-	width: 500px;
+	width: 800px;
 	font-size: 18px;
 	display: inline-flex;
 	align-items: center;
