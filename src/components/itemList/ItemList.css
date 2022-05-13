@@ -1,0 +1,7 @@
+.ItemList {
+	display: flex;
+	flext-direction: row;
+	align-items: center;
+	justify-content: space-evenly;
+	width: 100vw;
+}

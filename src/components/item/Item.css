@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Chewy&display=swap');
+
+.Item {
+	display: flex;
+}
+
+.ItemPresentation {
+	width: 200px;
+	padding: 10px;
+	margin: 20px;
+	border: 1px solid grey;
+	border-radius: 10px;
+	background-color: white;
+}
+
+.ItemPresentation h1 {
+	font-size: 32px;
+}
+
+.ItemPresentation h2 {
+	font-size: 25px;
+	font-family: 'Chewy', cursive;
+}
+
+.ItemPresentation h3 {
+	font-size: 15px;
+	font-weight: normal;
+}
+
+.ItemPresentation img {
+	width: 65px!important;
+}
