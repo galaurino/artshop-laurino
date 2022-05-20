@@ -3,12 +3,11 @@ import { useEffect, useState } from "react";
 import {products} from '../item/ItemProducts.js'
 import ItemDetail from '../itemDetail/ItemDetail.js';
 
-const ItemDetailContainer = ({id}) => {
+const ItemDetailContainer = ({id, productId}) => {
 	const [item, setItem] = useState(null);
-
 	React.useEffect(() => {
-		setItem(products.find(item => item.id === id));
-	}, [id])
+		setItem(products.find(item => item.id == productId));
+	}, [productId])
 
 	const getItem = (product) =>
 		new Promise ((resolve, reject) => {

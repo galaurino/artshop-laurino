@@ -7,7 +7,7 @@ function Item({product}) {
 	const {id} = useParams();
 	const navigate = useNavigate();
 	return (
-	<div className="ItemPresentation" onClick={() => navigate(`/product/${product.id}`)}>
+	<div className="ItemPresentation" onClick={() => navigate(`/product/${product.productId}`)}>
 			<p><img src={product.pictureUrl} alt={product.title} /></p>
 			<h1>{product.price}</h1>
 			<h2>{product.title}</h2>
