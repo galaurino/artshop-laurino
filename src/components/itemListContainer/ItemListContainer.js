@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
+import React from "react";
 import ItemList from '../itemList/ItemList.js'
 import {products} from '../item/ItemProducts.js'
+import { useParams } from 'react-router-dom';
 
 function ItemListContainer() {
+  const {category} = useParams();
 	const [prod, setProd]=useState([])
 	let condition = true
     const getProducts = new Promise((resolve, reject) => {
@@ -22,9 +25,11 @@ function ItemListContainer() {
    }, [])
 
    return (
-      <div className="ItemListContainer">
-            <ItemList prod={prod} />
+   	<>
+       <div className="ItemListContainer">
+            <ItemList prod={products.filter((prod)  => prod.category === category)} />
       </div>
+    </>
       )
 };
 

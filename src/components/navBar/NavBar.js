@@ -1,21 +1,31 @@
 import './NavBar.css';
 import CartWidget from '../cartWidget/CartWidget.js';
+import {  Link, NavLink } from "react-router-dom";
+
+const categories = [
+ { url: "clothing", label: "Clothing"},
+ { url: "mugs", label: "Mugs"},
+ { url: "prints", label: "Prints"},
+ { url: "commissions", label: "Commissions"}
+];
 
 function NavBar() {
 	return (
-
-			<div className="Nav">
-				<ul>
-					<li><h1>WildArts</h1></li>
-					<li><a href="#">Inicio</a></li>
-					<li><a href="#">Comisiones</a></li>
-					<li><a href="#">Remeras</a></li>
-					<li><a href="#">Posters</a></li>
-					<li><a href="#">Tazas</a></li>
-					<li><a href="#">Contacto</a></li>
-					<li><CartWidget /></li>
-				</ul>
-			</div>
+		<>
+			<div className="NavBar">
+				<Link to="/"><h1>WildArts</h1></Link>
+				<div className="Navigation">
+					{categories.map(({url, label}) =>(
+							<NavLink key={url} to={`/category/${url}`}>
+								{label}
+							</NavLink>
+						))}
+				</div>
+				<Link to="/cart">
+					<CartWidget />
+				</Link>
+				</div>
+		</>
 
 		);
 }

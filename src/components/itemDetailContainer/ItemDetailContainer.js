@@ -1,9 +1,14 @@
+import React from "react";
 import { useEffect, useState } from "react";
 import {products} from '../item/ItemProducts.js'
 import ItemDetail from '../itemDetail/ItemDetail.js';
 
-const ItemDetailContainer = () => {
+const ItemDetailContainer = ({id}) => {
 	const [item, setItem] = useState(null);
+
+	React.useEffect(() => {
+		setItem(products.find(item => item.id === id));
+	}, [id])
 
 	const getItem = (product) =>
 		new Promise ((resolve, reject) => {
