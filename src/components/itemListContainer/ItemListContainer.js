@@ -35,7 +35,7 @@ function ItemListContainer({id}) {
    return (
    	<>
        <div className="ItemListContainer">
-            <ItemList prod={products} />
+            <ItemList prod={prod} />
       </div>
     </>
       )

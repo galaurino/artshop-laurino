@@ -6,7 +6,7 @@ import ItemDetail from '../itemDetail/ItemDetail.js';
 const ItemDetailContainer = ({id, productId}) => {
 	const [item, setItem] = useState(null);
 	React.useEffect(() => {
-		setItem(products.find(item => item.id == productId));
+		setItem(products.find(item => item.productId === +productId));
 	}, [productId])
 
 	const getItem = (product) =>
