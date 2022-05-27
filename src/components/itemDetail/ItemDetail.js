@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import React from "react";
 import './ItemDetail.css';
 import ItemCount from '../itemCount/ItemCount.js';
+import { contexto } from '../customProvider/CustomProvider.js'
 
 
 function ItemDetail({item, product}) {
@@ -10,6 +11,9 @@ function ItemDetail({item, product}) {
 	const onAdd = (quantityToAdd) => {
 		setQuantity(quantityToAdd)
 	};
+
+	const {setCarrito} = useContext(contexto)
+	const {carrito} = useContext(contexto)
 
 	return (
 		<div className="itemDetail">
@@ -20,7 +24,7 @@ function ItemDetail({item, product}) {
 				<h3>{item.longdescription}</h3>
 				{quantity ?
 					<Link to="/cart">
-						<button>Ir al Carrito</button>
+						<button onEvent={(count) => setCarrito(count)}>Ir al Carrito</button>
 					</Link>
 					:  <ItemCount initial="1" stock={item.stock} onAdd={onAdd} />}
 			</div>
