@@ -1,19 +1,21 @@
 import { useState, useContext } from "react";
-import { Link } from "react-router-dom";
 import React from "react";
 import './ItemDetail.css';
 import ItemCount from '../itemCount/ItemCount.js';
 import { contexto } from '../customProvider/CustomProvider.js'
+import { Link, useNavigate } from 'react-router-dom';
 
 
 function ItemDetail({item, product}) {
+	const navigate = useNavigate();
+	const { addToCart, isInCart } = React.useContext(contexto);
 	const [quantity, setQuantity] = useState(0);
 	const onAdd = (quantityToAdd) => {
 		setQuantity(quantityToAdd)
 	};
 
-	const {setCarrito} = useContext(contexto)
-	const {carrito} = useContext(contexto)
+	const {setCart} = useContext(contexto)
+	const {cart} = useContext(contexto)
 
 	return (
 		<div className="itemDetail">
@@ -22,11 +24,11 @@ function ItemDetail({item, product}) {
 				<h2>{item.title}</h2>
 				<h1>$ {item.price}</h1>
 				<h3>{item.longdescription}</h3>
-				{quantity ?
-					<Link to="/cart">
-						<button onEvent={(count) => setCarrito(count)}>Ir al Carrito</button>
-					</Link>
-					:  <ItemCount initial="1" stock={item.stock} onAdd={onAdd} />}
+				{!isInCart(item.id) ? (
+			          <ItemCount initial="1" stock={item.stock} onAdd={() => addToCart(item, quantity)} />
+			          ) : (
+			            <button onClick={() => navigate(`/cart`)}>Ir al carrito</button>
+			        )}
 			</div>
 		</div>
 		)

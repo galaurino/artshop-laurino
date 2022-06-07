@@ -1,28 +1,55 @@
-import React, { createContext } from "react"
-
-export const contexto = createContext()
-
-const Provider = contexto.Provider
+import React, { createContext } from "react";
+export const contexto = createContext();
+const Provider = contexto.Provider;
 
 export default function CustomProvider({children}) {
-	const [carrito, setCarrito] = React.useState([])
+	const [cart, setCart] = React.useState([])
 
-	const addItem = (item,quantity) => {
-		
+	const addToCart = (prod, count) => {
+	    if(isInCart(prod.id)) {
+	      const newCart = cart.map(cartItem => {
+	        if(cartItem.id === prod.id) {
+	          cartItem.quantity++
+	        }
+	        return cartItem
+	      })
+	      setCart(newCart)
+	    }
+	    else {
+	      setCart([...cart, {...prod, quantity: +count}])
+	    }
 	}
+
+	const removeFromCart = (prod, id) => {
+		if(isInCart(prod.id)) {
+	      const newCart = cart.filter(cartItem => cartItem.id !== id);
+   		  setCart(newCart)
+	    }
+	const newCart = cart.map((cartItem) => {
+       if (cartItem.id === prod.id) {
+         cartItem.quantity--;
+       }
+       return cartItem;
+     });
+     setCart(newCart);
+
+  }
 
 	const emptyCart = ()  => {
-		setCarrito ([])
+		setCart ([])
 	}
 
-	const valueCart = {
-		carrito: carrito,
-		setCarrito: setCarrito
-	}
+	 const isInCart = (id) => {
+    return cart.find(prod => prod.id === id)
+  }
 
 	return (
-		<Provider value={valueCart}>
-			{children}
-		</Provider>
-	)
+    <Provider value={{
+      addToCart,
+      removeFromCart,
+      emptyCart,
+      isInCart,
+      cart,
+    }}>{children}</Provider>
+  )
 }

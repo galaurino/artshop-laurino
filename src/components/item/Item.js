@@ -12,7 +12,6 @@ function Item({product}) {
 			<h1>{product.price}</h1>
 			<h2>{product.title}</h2>
 			<h3>{product.description}</h3>
-			<ItemCount stock={product.stock} initial="1" />
 	</div>
 	)
 };
