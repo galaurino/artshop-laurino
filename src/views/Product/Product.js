@@ -8,7 +8,7 @@ export default function Product () {
 	return (
 		<>
 		<NavBar />
-		<ItemDetailContainer productId={+productId} />
+		<ItemDetailContainer productId={productId} />
 		</>
 		)
 }

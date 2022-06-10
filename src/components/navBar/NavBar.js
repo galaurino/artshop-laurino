@@ -3,10 +3,10 @@ import CartWidget from '../cartWidget/CartWidget.js';
 import {  Link, NavLink } from "react-router-dom";
 
 const categories = [
- { url: "clothing", label: "Clothing"},
- { url: "mugs", label: "Mugs"},
- { url: "prints", label: "Prints"},
- { url: "commissions", label: "Commissions"}
+ { url: "1", label: "Clothing"},
+ { url: "2", label: "Mugs"},
+ { url: "3", label: "Prints"},
+ { url: "4", label: "Commissions"}
 ];
 
 function NavBar() {
