@@ -1,20 +1,17 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import {products} from '../item/ItemProducts.js'
 import ItemDetail from '../itemDetail/ItemDetail.js';
 import { getFirestore, doc, getDoc } from "firebase/firestore"
 
-const ItemDetailContainer = ({title}) => {
+function ItemDetailContainer ({productId}) {
 	const [item, setItem] = useState({});
 	React.useEffect(() => {
-		const productRef = doc(db, "productos", title)
 		const db = getFirestore()
+		const productRef = doc(db, "productos", productId)
 		getDoc(productRef).then((snapshot) => {
-			if(snapshot.exists()) {
 				setItem({id: snapshot.id, ...snapshot.data()})
-			}
-		})
-	}, [title])
+		});
+	}, [productId])
 
 	const getItem = (product) =>
 		new Promise ((resolve, reject) => {
@@ -27,23 +24,11 @@ const ItemDetailContainer = ({title}) => {
 			}, 2000);
 		});
 
-	useEffect(() => {
-		getItem(products)
-			.then((res) => setItem(res))
-			.catch((err) => console.log(err));
-	}, []);
-
 	return (
 		<>
-			{item
-				? (
-					<>
-					{item.map((item) => (
-						<ItemDetail item={item} key={item.id} />
-					))}
-					</>	
-					)
-				: "Loading..."}
+
+			<ItemDetail item={item} />
+			
 		</>
 	);
 }

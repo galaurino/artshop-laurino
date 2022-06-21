@@ -1,6 +1,6 @@
 import './NavBar.css';
 import CartWidget from '../cartWidget/CartWidget.js';
-import {  Link, NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const categories = [
  { url: "1", label: "Clothing"},
